@@ -1,0 +1,28 @@
+<h2> New book</h2>
+
+<%= form_for(@book) do |f| %>
+
+    <% if @book_new.errors.any? %>
+        <div id="error_explanatin">
+          <h3> error</h3>
+          <% @book_new.errors.full_messages.each do |message| %>
+            <li> <%= message %></li>
+          <% end %>
+        </div>
+    <% end %>
+
+	<div class="field row">
+		<%= f.label :Title %><br>
+		<%= f.text_field :title %>
+	</div>
+
+	<div class="field row">
+		<%= f.label :Opinion %><br>
+		<%= f.text_area :body %>
+	</div>
+
+	<div class="actions row">
+		<%= f.submit "Create Book" %>
+	</div>
+
+<% end %>

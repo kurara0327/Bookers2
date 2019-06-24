@@ -1,0 +1,33 @@
+<h2>User info</h2>
+
+<%= form_for(@user) do |f| %>
+
+	<% if @user.errors.any? %>
+		<div id="error_explanatin">
+			<h3> error</h3>
+			<% @user.errors.full_messages.each do |message| %>
+				<li> <%= message %></li>
+			<% end %>
+		</div>
+	<% end %>
+
+	<div class="field">
+		<%= f.label :Name %>
+	    <%= f.text_field :name %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :Image %>
+	    <%= f.attachment_field :profile_image, fallback: "no_image.jpg", :size => '30*30' %>
+	</div>
+	
+	<div class="field">
+	<%= f.label :Introduction %>
+	   <%= f.text_field :introduction %>
+	</div>
+	
+	<div class="actions">
+    <%= f.submit "Update User" %>
+	</div>
+
+<% end %>
